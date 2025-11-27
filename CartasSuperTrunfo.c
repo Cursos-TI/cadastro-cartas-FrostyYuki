@@ -1,16 +1,12 @@
 #include <stdio.h>
 
 // Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das cartas
-// Objetivo: No nível novato você deve criar as cartas representando as cidades utilizando scanf para entrada de dados e printf para exibir as informações.
 
 int main() {
-  // Área para definição das variáveis para armazenar as propriedades das cidades
-  char estado1[30], estado2[30];
+  // Área para definição das variáveis para armazenar as propriedades dos países
+  char pais1[30], pais2[30];
   char codigo1[7];
   char codigo2[7];
-  char cidade1[30];
-  char cidade2[30];
   unsigned long int populacao1, populacao2;
   float area1, area2;
   float pib1, pib2;
@@ -25,17 +21,15 @@ int main() {
   int resultadoDensidade;
   int resultadoCapita;
   int resultadoSuperPoder;
+  int escolhaAtributo;
 
   // Área para entrada de dados
-  printf ("Propriedades da cidade 1: \n");
-  printf ("Digite o Estado: \n");
-  scanf ("%s", estado1);
+  printf ("Propriedades do País 1: \n");
+  printf ("Digite o País: \n");
+  scanf ("%s", pais1);
 
   printf ("Digite o código: \n");
   scanf ("%s", codigo1);
-
-  printf ("Digite a cidade: \n");
-  scanf ("%s", cidade1);
 
   printf ("Digite a população: \n");
   scanf ("%lu", &populacao1);
@@ -50,15 +44,12 @@ int main() {
   scanf ("%d", &npturisco1);
 
 
-  printf ("Propriedades da cidade 2: \n");
-  printf ("Digite o Estado: \n");
-  scanf ("%s", estado2);
+  printf ("Propriedades do País 2: \n");
+  printf ("Digite o País: \n");
+  scanf ("%s", pais2);
 
   printf ("Digite o código: \n");
   scanf ("%s", codigo2);
-
-  printf ("Digite a cidade: \n");
-  scanf ("%s", cidade2);
 
   printf ("Digite a população: \n");
   scanf ("%lu", &populacao2);
@@ -83,11 +74,10 @@ int main() {
   superpoder2 = (float) (populacao2 + area2 + pib2 + npturisco2 + pibcapita2 - densidade2);
    
 
-  // Área para exibição dos dados da cidade
-  printf ("Cidade 1:\n");
-  printf ("Estado: %s \n", estado1);
+  // Área para exibição dos dados do País
+  printf ("País 1:\n");
+  printf ("País: %s \n", pais1);
   printf ("Código: %s \n", codigo1);
-  printf ("Cidade: %s \n", cidade1);
   printf ("População: %lu \n", populacao1);
   printf ("Área: %.2f km² \n", area1);
   printf ("PIB: %.2f bilhões de reais \n", pib1);
@@ -96,10 +86,9 @@ int main() {
   printf ("PIB per capita: %.2f reais \n", pibcapita1);
   printf ("Super Poder: %.2f \n", superpoder1);
 
-  printf ("Cidade 2:\n");
-  printf ("Estado: %s \n", estado2);
+  printf ("País 2:\n");
+  printf ("País: %s \n", pais2);
   printf ("Código: %s \n", codigo2);
-  printf ("Cidade: %s \n", cidade2);
   printf ("População: %lu \n", populacao2);
   printf ("Área: %.2f km² \n", area2);
   printf ("PIB: %.2f bilhões de reais \n", pib2);
@@ -108,17 +97,103 @@ int main() {
   printf ("PIB per capita: %.2f reais \n", pibcapita2);
   printf ("Super Poder: %.2f \n", superpoder2);
 
-  // Área de exibição de resultados
-  printf ("\n Comparação de cartas (Atributo: População): \n");
-  printf ("\n Carta 1 - %s: %lu \n", estado1, populacao1);
-  printf (" Carta 2 - %s: %lu \n", estado2, populacao2);
-  
-  if (populacao1 > populacao2){
-    printf ("Resultado: Carta 1 (%s) Venceu!", estado1);
-  } else {
-    printf ("Resultado: Carta 2 (%s) Venceu!", estado2);
-  }
+  //Área do menu interativo
+  printf ("\nEscolha o atributo a ser comparado:\n");
+  printf ("1. População\n");
+  printf ("2. Área\n");
+  printf ("3. PIB\n");
+  printf ("4. Número de pontos turísticos\n");
+  printf ("5. Densidade demográfica\n");
+  printf ("Digite o número: ");
+  scanf ("%d", &escolhaAtributo);
 
+  //Exibição das comparações dos atributos
+  switch (escolhaAtributo)
+  {
+  case 1:
+    printf ("\nPaís 1: %s - País 2: %s \n", pais1, pais2);
+    printf ("Atributo: População \n");
+    printf ("%s: %lu - %s: %lu \n", pais1, populacao1, pais2, populacao2);
+    if (populacao1 > populacao2)
+    {
+      printf ("Carta 1: %s - Venceu! \n", pais1);
+    } else if (populacao1 < populacao2)
+    {
+      printf ("Carta 2: %s - Venceu! \n", pais2);
+    } else  
+    {
+      printf ("As cartas empataram! \n");
+    }
+    break;
+
+  case 2:
+    printf ("\nPaís 1: %s - País 2: %s \n", pais1, pais2);
+    printf ("Atributo: Área \n");
+    printf ("%s: %.2f - %s: %.2f \n", pais1, area1, pais2, area2);
+    if (area1 > area2)
+    {
+      printf ("Carta 1: %s - Venceu! \n", pais1);
+    } else if (area1 < area2)
+    {
+      printf ("Carta 2: %s - Venceu! \n", pais2);
+    } else  
+    {
+      printf ("As cartas empataram! \n");
+    }
+    break;
+
+  case 3:
+    printf ("\nPaís 1: %s - País 2: %s \n", pais1, pais2);
+    printf ("Atributo: PIB \n");
+    printf ("%s: %.2f - %s: %.2f \n", pais1, pib1, pais2, pib2);
+    if (pib1 > pib2)
+    {
+      printf ("Carta 1: %s - Venceu! \n", pais1);
+    } else if (pib1 < pib2)
+    {
+      printf ("Carta 2: %s - Venceu! \n", pais2);
+    } else  
+    {
+      printf ("As cartas empataram! \n");
+    }
+    break;
+
+  case 4:
+    printf ("\nPaís 1: %s - País 2: %s \n", pais1, pais2);
+    printf ("Atributo: Número de pontos turísticos \n");
+    printf ("%s: %d - %s: %d \n", pais1, npturisco1, pais2, npturisco2);
+    if (npturisco1 > npturisco2)
+    {
+      printf ("Carta 1: %s - Venceu! \n", pais1);
+    } else if (npturisco1 < npturisco2)
+    {
+      printf ("Carta 2: %s - Venceu! \n", pais2);
+    } else  
+    {
+      printf ("As cartas empataram! \n");
+    }
+    break;
+
+  case 5:
+    printf ("\nPaís 1: %s - País 2: %s \n", pais1, pais2);
+    printf ("Atributo: Densidade Demográfica \n");
+    printf ("%s: %.2f - %s: %.2f \n", pais1, densidade1, pais2, densidade2);
+    if (densidade2 > densidade1)
+    {
+      printf ("Carta 1: %s - Venceu! \n", pais1);
+    } else if (densidade2 < densidade1)
+    {
+      printf ("Carta 2: %s - Venceu! \n", pais2);
+    } else  
+    {
+      printf ("As cartas empataram! \n");
+    }
+    break;
+
+  default:
+    printf ("\nOpção Inválida \n");
+    break;
+  }
 
 return 0;
 
